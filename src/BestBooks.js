@@ -1,6 +1,10 @@
 import React from 'react';
+import "bootstrap/dist/css/bootstrap.min.css";
+import Jumbotron from "react-bootstrap/Jumbotron";
+import "./BestBooks.css";
+import { withAuth0 } from "@auth0/auth0-react";
 
-class BestBooks extends React.Component {
+class MyFavoriteBooks extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,21 +15,27 @@ class BestBooks extends React.Component {
   /* TODO: Make a GET request to your API to fetch books for the logged in user  */
 
   render() {
-
-    /* TODO: render user's books in a Carousel */
-
+    const { isAuthenticated } = this.props.auth0;
     return (
       <>
-        <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
-
-        {this.state.books.length ? (
-          <p>Book Carousel coming soon</p>
-        ) : (
-          <h3>No Books Found :(</h3>
+        {isAuthenticated && (
+          <Jumbotron>
+            <h1>My Favorite Books</h1>
+            <p>This is a collection of my favorite books</p>
+          </Jumbotron>
         )}
       </>
-    )
+    );
   }
 }
 
-export default BestBooks;
+export default withAuth0(MyFavoriteBooks);
+  
+  
+  
+  
+  
+  
+  
+  
+   

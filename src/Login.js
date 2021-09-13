@@ -1,32 +1,21 @@
 import React from 'react';
-import "bootstrap/dist/css/bootstrap.min.css";
 import Card from 'react-bootstrap/Card';
-import './login.css';
-import LoginButton from "./components/LoginButton";
-import { withAuth0 } from "@auth0/auth0-react";
+
 
 class Login extends React.Component {
   render() {
-    const  { isAuthenticated }  = this.props.auth0;
     return (
-      <>
-
-
-     {!isAuthenticated && (
-
-          <Card className='mt-5 mb-5' style={{ width: "18rem" }}>
-            <Card.Body>
-              <Card.Title>Log In</Card.Title>
-              <Card.Text>Click Below to Log In</Card.Text>
-              <LoginButton />
-            </Card.Body>
-          </Card>
-        )}
-
-   </>
-      );
-   }
+      <Card style={{ width: '18rem' }}>
+        <Card.Body>
+          <Card.Title>Log In</Card.Title>
+          <Card.Text>
+            Click Below to Log In
+          </Card.Text>
+          {/* TODO: add a `LoginButton` component here that will log the user in */}
+        </Card.Body>
+      </Card>
+    )
+  }
 }
 
-
-export default  withAuth0(Login);
+export default Login;

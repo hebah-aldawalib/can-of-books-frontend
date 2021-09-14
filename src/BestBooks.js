@@ -21,8 +21,14 @@ class BestBooks extends React.Component {
     axios.get(`${process.env.REACT_APP_API_URL}/book`).then((bookResponse) => {
 
 
+
       this.setState({  bookData: bookResponse.data });
       console.log(this.state.bookData);
+
+ 
+
+      this.setState({  bookData: bookResponse.data });
+      console.log(bookResponse);
 
     }).catch(error => alert(error.message));
 

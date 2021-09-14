@@ -1,39 +1,74 @@
-import React from 'react';
-import "bootstrap/dist/css/bootstrap.min.css";
-import Jumbotron from "react-bootstrap/Jumbotron";
-// import "./BestBooks.css";
-import { withAuth0 } from "@auth0/auth0-react";
 
-class MyFavoriteBooks extends React.Component {
+import "bootstrap/dist/css/bootstrap.min.css";
+import React, { Component } from 'react';
+import Card from 'react-bootstrap/Card';
+import axios from 'axios';
+
+class BestBooks extends React.Component {
+
+
   constructor(props) {
     super(props);
     this.state = {
-      books: []
+      bookData:[],
     }
   }
 
-  /* TODO: Make a GET request to your API to fetch books for the logged in user  */
 
+  componentDidMount = () => {
+   
+
+    axios.get(`${process.env.REACT_APP_API_URL}/book`).then((bookResponse) => {
+
+
+      this.setState({  bookData: bookResponse.data });
+      console.log(this.state.bookData);
+
+    }).catch(error => alert(error.message));
+
+  }
   render() {
-    const { isAuthenticated } = this.props.auth0;
+   
     return (
-      <>
-        {isAuthenticated && (
-          <Jumbotron>
-            <h1>My Favorite Books</h1>
-            <p>This is a collection of my favorite books</p>
-          </Jumbotron>
-        )}
-      </>
+      <div>
+      {
+        this.state.bookData.length > 0 &&
+        <>
+          {
+            this.state.bookData.map(book => {
+              return (
+                <>
+                  <Card style={{ width: '18rem' }}>
+                    {/* <Card.Img variant="top" src={book.title} /> */}
+                    <Card.Body>
+                      <Card.Title>{book.title}</Card.Title>
+                      <Card.Text>
+                         Status: {book.status}
+                      </Card.Text>
+                     
+                      <Card.Text>
+                      The description:  {book.description}
+                      </Card.Text>
+                      <Card.Text>
+                       User email: {book.email}
+                      </Card.Text>
+                    </Card.Body>
+                  </Card>
+                </>
+              )
+            })
+          }
+        </>
+      }
+    </div>
     );
   }
 }
 
-export default withAuth0(MyFavoriteBooks);
   
   
   
-  
+export default BestBooks
   
   
   

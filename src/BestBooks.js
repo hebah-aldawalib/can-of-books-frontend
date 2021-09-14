@@ -1,7 +1,7 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Jumbotron from "react-bootstrap/Jumbotron";
-import "./BestBooks.css";
+// import "./BestBooks.css";
 import { withAuth0 } from "@auth0/auth0-react";
 
 class MyFavoriteBooks extends React.Component {

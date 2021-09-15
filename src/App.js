@@ -1,9 +1,9 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import MyFavoriteBooks from "./BestBooks";
+import BestBooks from "./BeastBook";
 import Login from "./Login";
-import Profile from "./components/Profile";
+import Profile from "./Profile";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
@@ -33,29 +33,69 @@ class App extends React.Component {
     })
   }
 
+
+
+
   render() {
-    console.log("app" ,this.props);
     return (
       <>
-        <Router>
+             <Router>
           <Header user={this.state.user} onLogout={this.logoutHandler} />
           <Switch>
             <Route exact path="/">
-              <MyFavoriteBooks/>
               <Login/>
-              {/* TODO: if the user is logged in, render the `BestBooks` component, if they are not, render the `Login` component */}
-            </Route>
-            {/* TODO: add a route with a path of '/profile' that renders a `Profile` component */}
-         <Rout exactpath="profule">
-           <Profile/>
-         </Rout>
-        
-        </Switch>
+              <BestBooks/>
+              
+            </Route >
+            <Route exact path="./Profile">
+            <Profile/>
+
+            
+            </Route >
+          </Switch>
           <Footer />
         </Router>
       </>
-    );
+    )
   }
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+// <>
+
+// <Header user={this.state.user} onLogout={this.logoutHandle} />
+//         < BrowserRouter>
+
+//           <Switch>
+//             <Route exact path="/" >
+
+//               <Login/>
+//               <BestBooks/>
+//             </Route>
+
+//          <Route exactpath="./Profile">
+//            <Profile/>
+//          </Route>
+
+//         </Switch>
+//           {/* <Footer /> */}
+//           < BrowserRouter/>
+//       </>
+//     );
+//   }
+// }
+
+// export default App;

@@ -4,10 +4,7 @@ class Profile extends Component {
 
   render() {
 
-    return <p>page coming soon</p>
-
-
-
+    return <p>page coming soon </p>
   }
 };
 

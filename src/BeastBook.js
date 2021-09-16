@@ -8,9 +8,8 @@ import AddBook from "./addBook";
 import UpdateBook from './updatebooks';
 
 
-
-class BestBooks extends React.Component {
-
+class BestBooks extends React.Component
+ {
 
   constructor(props) {
     super(props);
@@ -21,8 +20,8 @@ class BestBooks extends React.Component {
       selectedbookDataObj: {}
 
     }
-  }
 
+  }
   
   handelAddModal = (e) => {
     e.preventDefault();
@@ -156,6 +155,7 @@ class BestBooks extends React.Component {
 
 
   }
+{/* update */}
 
 {
           this.state.showUpdateModal &&
